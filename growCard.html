@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Image Card Slider</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+
+      .slider-container {
+        width: 100%;
+        max-width: 900px;
+        overflow: hidden;
+      }
+
+      .image-card-slider {
+        display: flex;
+      }
+      .image-card-slider-transform {
+        transition: transform 2s ease;
+        will-change: transform;
+      }
+
+      /* Default styles for image */
+      .image-card img {
+        width: 100%;
+        display: block;
+        transition: transform 0.3s ease;
+        height: 350px;
+        object-fit: cover;
+      }
+
+      .card-content {
+        position: absolute;
+        bottom: 0px;
+        left: 5px;
+        color: white;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 1),
+          rgba(128, 128, 128, 0)
+        );
+        width: calc(100% - 10px);
+        padding: 30px 10px;
+        opacity: 0; /* Start as transparent */
+        visibility: hidden; /* Make it invisible */
+        transition: opacity 1s ease, visibility 0.3s ease; /* Smooth transition */
+      }
+
+      /* Show description only for the active card */
+      .image-card.active .card-content {
+        opacity: 1; /* Fully visible */
+        visibility: visible; /* Make it visible */
+      }
+
+      .card-content h3 {
+        margin: 0;
+      }
+
+      .card-content p {
+        font-size: 14px;
+      }
+
+      /* Default styling for image cards */
+      .image-card {
+        flex: 0 0 25%; /* Default width for non-active cards */
+        filter: grayscale(100%) blur(0px); /* Apply grayscale and blur */
+        transition: flex 1s ease, transform 0.5s ease, filter 0.5s ease; /* Smooth transition */
+
+        box-sizing: border-box;
+        text-align: center;
+        position: relative;
+
+        padding-inline: 5px;
+      }
+
+      /* Styling for the active card */
+      .image-card.active {
+        flex: 0 0 50%; /* Active card takes 50% width */
+        z-index: 1;
+        transform: scale(1); /* Slight scaling effect */
+        filter: none; /* Remove grayscale and blur */
+      }
+
+      /* Spacing for smaller devices */
+      @media (max-width: 768px) {
+        .card-content h3 {
+          font-size: 18px;
+        }
+
+        .card-content p {
+          font-size: 12px;
+        }
+
+        /* Default styling for image cards */
+        .image-card {
+          flex: 0 0 10%; /* Default width for non-active cards */
+          filter: grayscale(100%) blur(0px); /* Apply grayscale and blur */
+          transition: flex 1s ease, transform 0.5s ease, filter 0.5s ease; /* Smooth transition */
+
+          box-sizing: border-box;
+          text-align: center;
+          position: relative;
+
+          padding-inline: 5px;
+        }
+
+        /* Styling for the active card */
+        .image-card.active {
+          flex: 0 0 80%; /* Active card takes 50% width */
+          z-index: 1;
+          transform: scale(1); /* Slight scaling effect */
+          filter: none; /* Remove grayscale and blur */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-container">
+      <div class="image-card-slider image-card-slider-transform">
+        <div class="image-card">
+          <img src="./effortcardimg.png" alt="Image 1" />
+          <div class="card-content">
+            <h3>Card Title 1</h3>
+            <p>Description for card 1.</p>
+          </div>
+        </div>
+        <div class="image-card">
+          <img src="./expimg2.png" alt="Image 2" />
+          <div class="card-content">
+            <h3>Card Title 2</h3>
+            <p>Description for card 2.</p>
+          </div>
+        </div>
+        <div class="image-card">
+          <img src="./image1.png" alt="Image 3" />
+          <div class="card-content">
+            <h3>Card Title 3</h3>
+            <p>Description for card 3.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const slider = document.querySelector(".image-card-slider");
+      const cards = document.querySelectorAll(".image-card");
+      const totalSlides = cards.length;
+      let currentIndex = 0;
+
+      // Clone the first card and append it to the end for circular effect
+
+      const firstClone = cards[0].cloneNode(true);
+      const secondClone = cards[1].cloneNode(true);
+      slider.appendChild(firstClone);
+      slider.appendChild(secondClone);
+
+      // Function to update the slider and active card styles
+      function updateSlider() {
+        const isMobile = window.innerWidth <= 768; // Check if the device width is less than or equal to 768px
+        const translatePercentage = isMobile ? 10 : 25; // Use 10% for mobile, 25% for larger screens
+        cards.forEach((card, index) => {
+          card.classList.remove("active", "next", "prev"); // Remove all classes
+
+          if (index === currentIndex) {
+            card.classList.add("active"); // Active card (50% width)
+          } else if (index === (currentIndex + 1) % totalSlides) {
+            card.classList.add("next"); // Next card (25% width)
+          } else if (index === (currentIndex - 1 + totalSlides) % totalSlides) {
+            card.classList.add("prev"); // Previous card (25% width)
+          }
+        });
+
+        if (currentIndex === 0) {
+          slider.style.transform = `translateX(-${0}%)`;
+        } else {
+          slider.classList.add("image-card-slider-transform");
+          // Move the slider to show the active card in the center
+          slider.style.transform = `translateX(-${
+            currentIndex * translatePercentage
+          }%)`;
+        }
+      }
+
+      // Function to show the next slide
+      function showNextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides; // Move to next card (circular transition)
+        updateSlider(); // Update the styling and position
+      }
+      updateSlider();
+
+      // Set the slider to change every 3 seconds
+      setInterval(showNextSlide, 3000);
+
+      // Initialize the slider
+    </script>
+  </body>
+</html>

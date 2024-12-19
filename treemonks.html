@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <title>TreeMonks By Tyndis</title>
+
+    <style>
+      @font-face {
+        font-family: "Semplicita Pro";
+        src: url("./Assets/Css/SemplicitaPro.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Semplicita Pro", Arial, sans-serif;
+      }
+
+      .banner-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .banner-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+      }
+
+      .banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 2;
+      }
+
+      .banner-content-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        color: white;
+        text-align: left;
+        z-index: 3;
+        height: 100%;
+      }
+
+      .banner-content {
+        width: 90%;
+        margin-inline: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+      }
+
+      .banner-content h1 {
+        width: 60%;
+        font-size: 70px;
+        margin: 0;
+        font-family: "Semplicita Pro", Arial, sans-serif;
+        font-weight: 600;
+        margin-left: 15px;
+      }
+      .controls {
+        margin-bottom: 50px;
+      }
+      .control-btn {
+        background-color: transparent;
+        border: none;
+      }
+      .control-btn img {
+        margin-left: 15px;
+        width: 70px;
+        margin-bottom: 30px;
+      }
+
+      .scroll {
+        position: absolute;
+        bottom: 50px;
+        right: 50px;
+        display: flex;
+        color: #f15b26;
+        align-items: center;
+        gap: 5px;
+      }
+      .scroll img {
+        height: 30px;
+      }
+      .section-container {
+        width: 85%;
+        margin-inline: auto;
+        padding-top: 80px;
+      }
+      .text-left {
+        text-align: left;
+      }
+      /* status section */
+      .status-section {
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .status-item {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+        width: max-content;
+      }
+
+      .status-item img {
+        height: 60px;
+      }
+
+      .status-item .count {
+        font-size: 40px;
+        font-weight: 600;
+        color: #506e30;
+      }
+
+      .status-item .title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #f15b26;
+      }
+
+      /* about section */
+      .about {
+        padding-top: 20px;
+      }
+      .about h5 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #0000004d;
+      }
+
+      .about h3 {
+        width: 70%;
+        font-size: 50px;
+        font-weight: 600;
+        margin-top: 10px;
+        color: #1e1e1e;
+      }
+
+      .about-des {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .about-des p {
+        width: 40%;
+        font-size: 18px;
+        font-weight: 500;
+        color: #555555;
+      }
+      .about-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+      }
+      .about-img .about-img1 {
+        width: 80px;
+        height: 80px;
+      }
+      .about-img .about-img2 {
+        width: 135px;
+      }
+
+      /* product section */
+
+      .product h5 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #0000004d;
+      }
+
+      .product h3 {
+        width: 70%;
+        font-size: 50px;
+        font-weight: 600;
+        margin: 0px;
+
+        color: #1e1e1e;
+      }
+
+      .pro-card {
+        background-color: white;
+        display: flex;
+        justify-content: space-between;
+      }
+      .pro-card .pro-left {
+        display: flex;
+        align-items: start;
+        gap: 20px;
+      }
+
+      .pro-left p {
+        margin: 0px;
+        color: #506e30;
+        font-size: 24px;
+
+        font-weight: 500;
+      }
+      .pro-card .pro-right {
+        width: 70%;
+      }
+
+      .pro-right img {
+        width: 100%;
+        height: 450px;
+        object-fit: contain;
+      }
+      .pro-content h4 {
+        margin: 0px;
+        font-size: 24px;
+        color: #f15b26;
+        font-weight: 500;
+      }
+      .pro-content p {
+        margin-block: 10px;
+        font-size: 18px;
+        color: #555555;
+        font-weight: 500;
+      }
+
+      /* recommented produts */
+
+      .rec-product h5 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #0000004d;
+        margin-bottom: 15px;
+      }
+
+      .rec-product h3 {
+        width: 40%;
+        font-size: 50px;
+        font-weight: 600;
+        margin: 0px;
+        color: #1e1e1e;
+      }
+      .rec-pro-cards {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 70px;
+      }
+      .rec-card1 {
+        position: relative;
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+        overflow: hidden;
+      }
+
+      .rec-card1 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .circle1 {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 90px;
+        height: 90px;
+        background-color: #506e30;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .arrow {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.5rem;
+        color: white;
+      }
+
+      .rec-title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 22px;
+        font-weight: 600;
+        color: white;
+        text-align: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .rec-card1:hover .circle1 {
+        width: 250px;
+        height: 250px;
+        border-radius: 0;
+        background-color: #506e30;
+      }
+
+      .rec-card1:hover .rec-title {
+        opacity: 1;
+      }
+
+      .rec-card2 {
+        position: relative;
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+        overflow: hidden;
+      }
+
+      .rec-card2 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .circle2 {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 90px;
+        height: 90px;
+        background-color: #f15b26;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .rec-card2:hover .circle2 {
+        width: 250px;
+        height: 250px;
+        border-radius: 0;
+        background-color: #f15b26;
+      }
+
+      .rec-card2:hover .rec-title {
+        opacity: 1;
+      }
+
+      /* clients slider */
+
+      .clients h5 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #0000004d;
+        margin-bottom: 15px;
+      }
+
+      .clients-des {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+      }
+
+      .clients-des h3 {
+        width: 70%;
+        font-size: 50px;
+        font-weight: 600;
+        margin: 0px;
+        color: #1e1e1e;
+      }
+
+      .clients-des p {
+        width: 40%;
+        font-size: 18px;
+        font-weight: 500;
+        color: #555555;
+      }
+      .slider-item {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+
+        height: 150px;
+      }
+
+      /* group section */
+
+      .group-container {
+        margin-top: 20px;
+        background-color: #506e30;
+      }
+      .tour {
+        width: 85%;
+        margin-inline: auto;
+        padding-block: 50px;
+        position: relative;
+      }
+
+      .tour-img {
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 70px;
+        height: 70px;
+      }
+      .tour h5 {
+        font-size: 22px;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 15px;
+      }
+
+      .tour-des {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+      }
+
+      .tour h3 {
+        width: 70%;
+        font-size: 50px;
+        font-weight: 600;
+        margin: 0px;
+        color: white;
+        margin-bottom: 20px;
+      }
+
+      .tour-des p {
+        width: 40%;
+        font-size: 18px;
+        font-weight: 500;
+        color: white;
+      }
+
+      .tour-des .tour-des2 {
+        width: 30%;
+        color: rgb(199, 199, 199);
+      }
+
+      .slider-container {
+        width: 100%;
+        padding-top: 60px;
+        overflow: hidden;
+      }
+
+      .image-card-slider {
+        display: flex;
+      }
+      .image-card-slider-transform {
+        transition: transform 2s ease;
+        will-change: transform;
+      }
+
+      /* Default styles for image */
+      .image-card img {
+        width: 100%;
+        display: block;
+        transition: transform 0.3s ease;
+        height: 450px;
+        object-fit: cover;
+      }
+
+      .card-content {
+        position: absolute;
+        bottom: 0px;
+        left: 10px;
+        color: white;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 1),
+          rgba(128, 128, 128, 0)
+        );
+        width: calc(100% - 80px);
+        padding: 20px 30px;
+        opacity: 0; /* Start as transparent */
+        visibility: hidden; /* Make it invisible */
+        transition: opacity 1s ease, visibility 0.3s ease; /* Smooth transition */
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+      }
+      .card-content img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .tour-slider-des {
+        width: 50%;
+        text-align: left;
+      }
+      .tour-slider-des h5 {
+        font-size: 22px;
+      }
+
+      .tour-slider-des p {
+        font-size: 16px;
+        margin-bottom: 0px;
+      }
+      /* Show description only for the active card */
+      .image-card.active .card-content {
+        opacity: 1; /* Fully visible */
+        visibility: visible; /* Make it visible */
+      }
+
+      /* Default styling for image cards */
+      .image-card {
+        flex: 0 0 25%; /* Default width for non-active cards */
+        filter: grayscale(100%) blur(0px); /* Apply grayscale and blur */
+        transition: flex 1s ease, transform 0.5s ease, filter 0.5s ease; /* Smooth transition */
+
+        box-sizing: border-box;
+        text-align: center;
+        position: relative;
+
+        padding-inline: 10px;
+      }
+
+      /* Styling for the active card */
+      .image-card.active {
+        flex: 0 0 50%; /* Active card takes 50% width */
+        z-index: 1;
+        transform: scale(1); /* Slight scaling effect */
+        filter: none; /* Remove grayscale and blur */
+      }
+
+      /* Spacing for smaller devices */
+      @media (max-width: 768px) {
+        /* Default styling for image cards */
+        .image-card {
+          flex: 0 0 10%; /* Default width for non-active cards */
+          filter: grayscale(100%) blur(0px); /* Apply grayscale and blur */
+          transition: flex 1s ease, transform 0.5s ease, filter 0.5s ease; /* Smooth transition */
+
+          box-sizing: border-box;
+          text-align: center;
+          position: relative;
+
+          padding-inline: 5px;
+        }
+
+        /* Styling for the active card */
+        .image-card.active {
+          flex: 0 0 80%; /* Active card takes 50% width */
+          z-index: 1;
+          transform: scale(1); /* Slight scaling effect */
+          filter: none; /* Remove grayscale and blur */
+        }
+      }
+      /* stack cards */
+      .stack-cards {
+        margin-block: 50px;
+      }
+
+      .stack-cards__item {
+        position: sticky;
+        top: 100px;
+        transform-origin: center top;
+      }
+
+      @media only screen and (max-width: 490px) {
+        .stack-cards__item {
+          top: 50px;
+        }
+      }
+
+      /*landing slider */
+
+      .Client-Sliders {
+        padding: 50px 0;
+      }
+
+      .Client-Sliders .slick-slide {
+        margin: 0 0px;
+      }
+      .Client-Sliders .slick-list {
+        margin: 0 -2px;
+      }
+      .Client-Sliders .slick-arrow[aria-disabled="true"] {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .Client-Sliders .slick-dots {
+        display: none !important;
+      }
+      .Client-Sliders .slick-arrow {
+        position: absolute;
+        content: "";
+        z-index: 9;
+        width: 30px;
+        height: 30px;
+        transform: translate(-50%, -50%);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        text-indent: -9999px;
+      }
+      .Client-Sliders .slick-arrow::before {
+        content: "";
+      }
+      .Client-Sliders .slick-prev {
+        top: 40%;
+        bottom: inherit;
+        left: 0%;
+        right: inherit;
+        background-size: cover;
+        background-image: url("../expPrev.png");
+      }
+      .Client-Sliders .slick-next {
+        top: 40%;
+        bottom: inherit;
+        right: -30px;
+        left: inherit;
+        background-size: cover;
+        background-image: url("../expNext.png");
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="banner-container">
+        <video class="banner-video" autoplay muted loop id="video-banner">
+          <source src="./Assets/Images/video1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="banner-overlay"></div>
+        <div class="banner-content-container">
+          <div class="banner-content">
+            <div>
+              <img src="./Assets/Images/logo.png" alt="" />
+            </div>
+
+            <div class="controls">
+              <button class="control-btn" id="pause-btn">
+                <img src="./Assets/Images/pause_icon.png" alt="" />
+              </button>
+              <button class="control-btn" id="play-btn" style="display: none">
+                <img src="./Assets/Images/play_icon.png" alt="" />
+              </button>
+              <h1>
+                TreeMonks are pioneers in providing customised tours anywhere in
+                India
+              </h1>
+            </div>
+          </div>
+
+          <div class="scroll">
+            <p>Scroll Down</p>
+            <img src="./Assets/Images/mouse-cursor.png" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <!-- status section -->
+      <section class="section-container">
+        <div class="status-section">
+          <div class="status-item">
+            <img src="./Assets/Images/customer.png" alt="Icon 1" />
+            <div class="text-left">
+              <div class="count">
+                <span class="sts-number"> 14 </span> <span>k+</span>
+              </div>
+              <div class="title">Happy Customers</div>
+            </div>
+          </div>
+          <div class="status-item">
+            <img src="./Assets/Images/trade-center.png" alt="Icon 2" />
+            <div class="text-left">
+              <div class="count" style="width: 150px">
+                <span class="sts-number">100 </span> <span>+</span>
+              </div>
+              <div class="title">Companies</div>
+            </div>
+          </div>
+          <div class="status-item">
+            <img src="./Assets/Images/booking.png" alt="Icon 3" />
+            <div class="text-left">
+              <div class="count" style="width: 150px">
+                <span class="sts-number">500 </span> <span>+</span>
+              </div>
+              <div class="title">Bookings</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- about section -->
+      <section class="section-container">
+        <div class="about">
+          <h5>ABOUT US</h5>
+          <h3>
+            We believe that great teams don’t just happen, they’re built through
+            shared experiences and meaningful connections.
+          </h3>
+          <div class="about-des">
+            <p>
+              TreeMonks showcase a vast collection of truly unique escapes you
+              would want to pack your bags and step out to. We customize tour
+              packages as per the guest choice of travel like honeymoon, family,
+              solo, workation & staycation.
+            </p>
+            <div class="about-img">
+              <img
+                src="./Assets/Images/readmore.png"
+                class="about-img1"
+                alt=""
+              />
+              <img
+                src="./Assets/Images/treemonklogo.png"
+                alt=""
+                class="about-img2"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- product section -->
+      <section class="section-container">
+        <div class="product">
+          <h5>OUR PRODUCTS</h5>
+          <h3>
+            TreeMonks tours are handcrafted to ensure an unforgettable
+            experience.
+          </h3>
+          <div class="stack-cards js-stack-cards">
+            <div
+              class="pro-card effort-card stack-cards__item js-stack-cards__item"
+            >
+              <div class="pro-left">
+                <p>01</p>
+                <div class="pro-content">
+                  <h4>Staycations & Offsites</h4>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </p>
+                </div>
+              </div>
+              <div class="pro-right">
+                <img src="./Assets/Images/pro1.png" alt="" />
+              </div>
+            </div>
+
+            <div
+              class="pro-card effort-card stack-cards__item js-stack-cards__item"
+            >
+              <div class="pro-left">
+                <p>02</p>
+                <div class="pro-content">
+                  <h4>Team Building Games</h4>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </p>
+                </div>
+              </div>
+              <div class="pro-right">
+                <img src="./Assets/Images/pro2.png" alt="" />
+              </div>
+            </div>
+
+            <div
+              class="pro-card effort-card stack-cards__item js-stack-cards__item"
+            >
+              <div class="pro-left">
+                <p>03</p>
+                <div class="pro-content">
+                  <h4>Leadership Digital Detox</h4>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </p>
+                </div>
+              </div>
+              <div class="pro-right">
+                <img src="./Assets/Images/pro3.png" alt="" />
+              </div>
+            </div>
+
+            <div
+              class="pro-card effort-card stack-cards__item js-stack-cards__item"
+            >
+              <div class="pro-left">
+                <p>04</p>
+                <div class="pro-content">
+                  <h4>International Off Site</h4>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </p>
+                </div>
+              </div>
+              <div class="pro-right">
+                <img src="./Assets/Images/pro4.png" alt="" />
+              </div>
+            </div>
+
+            <div
+              class="pro-card effort-card stack-cards__item js-stack-cards__item"
+            >
+              <div class="pro-left">
+                <p>05</p>
+                <div class="pro-content">
+                  <h4>Learn a New skill</h4>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </p>
+                </div>
+              </div>
+              <div class="pro-right">
+                <img src="./Assets/Images/pro5.png" alt="" />
+              </div>
+            </div>
+
+            <div
+              class="pro-card effort-card stack-cards__item js-stack-cards__item"
+            >
+              <div class="pro-left">
+                <p>06</p>
+                <div class="pro-content">
+                  <h4>MICE & Events</h4>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </p>
+                </div>
+              </div>
+              <div class="pro-right">
+                <img src="./Assets/Images/pro6.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-container">
+        <div class="rec-product">
+          <h5>OUR PRODUCTS</h5>
+          <h3>Recommended Products</h3>
+          <div class="rec-pro-cards">
+            <div class="rec-card1">
+              <img src="./Assets/Images/recpro1.png" alt="Card Image" />
+              <div class="circle1">
+                <div class="arrow">
+                  <img src="./Assets/Images/arrow.png" alt="" />
+                </div>
+                <div class="rec-title">WORKATION</div>
+              </div>
+            </div>
+            <div class="rec-card2">
+              <img src="./Assets/Images/recpro2.png" alt="Card Image" />
+              <div class="circle2">
+                <div class="arrow">
+                  <img src="./Assets/Images/arrow.png" alt="" />
+                </div>
+                <div class="rec-title">
+                  CORPORATE <br />
+                  GIFTING
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- clients slider -->
+      <section class="section-container">
+        <div class="clients">
+          <h5>OUR CLIENTS</h5>
+
+          <div class="clients-des">
+            <h3>
+              Companies <br />
+              that we work with
+            </h3>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy
+            </p>
+          </div>
+
+          <div class="Client-Sliders">
+            <div class="slider-item">
+              <img src="./Assets/Images/company1.png" alt="" />
+            </div>
+            <div class="slider-item">
+              <img src="./Assets/Images/company2.png" alt="" />
+            </div>
+            <div class="slider-item">
+              <img src="./Assets/Images/company3.png" alt="" />
+            </div>
+            <div class="slider-item">
+              <img src="./Assets/Images/company4.png" alt="" />
+            </div>
+            <div class="slider-item">
+              <img src="./Assets/Images/company2.png" alt="" />
+            </div>
+            <div class="slider-item">
+              <img src="./Assets/Images/company3.png" alt="" />
+            </div>
+            <div class="slider-item">
+              <img src="./Assets/Images/company4.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- group section -->
+      <section class="group-container">
+        <div class="tour">
+          <img src="./Assets/Images/tour.png" class="tour-img" alt="" />
+          <h5>GROUP TOURS</h5>
+          <h3>Group name goes here</h3>
+          <div class="tour-des">
+            <p>
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum is that it has a more-or-less normal
+              distribution of letters.
+            </p>
+            <p class="tour-des2">
+              beautiful Group destinations and recommended Group Packages in
+              India.
+            </p>
+          </div>
+
+          <div class="slider-container">
+            <div class="image-card-slider image-card-slider-transform">
+              <div class="image-card">
+                <img src="./Assets/Images/tour1.png" alt="Image 1" />
+                <div class="card-content">
+                  <div class="tour-slider-des">
+                    <h5>GROUP NAME</h5>
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable
+                    </p>
+                  </div>
+                  <div>
+                    <img src="./Assets/Images/readmore.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="image-card">
+                <img src="./Assets/Images/tour2.png" alt="Image 2" />
+                <div class="card-content">
+                  <div class="tour-slider-des">
+                    <h5>GROUP NAME</h5>
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable
+                    </p>
+                  </div>
+                  <div>
+                    <img src="./Assets/Images/readmore.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="image-card">
+                <img src="./Assets/Images/tour3.png" alt="Image 3" />
+                <div class="card-content">
+                  <div class="tour-slider-des">
+                    <h5>GROUP NAME</h5>
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable
+                    </p>
+                  </div>
+                  <div>
+                    <img src="./Assets/Images/readmore.png" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const video = document.getElementById("video-banner");
+      const pauseBtn = document.getElementById("pause-btn");
+      const playBtn = document.getElementById("play-btn");
+
+      pauseBtn.addEventListener("click", () => {
+        video.pause();
+        pauseBtn.style.display = "none";
+        playBtn.style.display = "block";
+      });
+
+      playBtn.addEventListener("click", () => {
+        video.play();
+        playBtn.style.display = "none";
+        pauseBtn.style.display = "block";
+      });
+    </script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+
+    <script type="text/javascript" src="./Assets/js/Slider.js?v=1.1"></script>
+
+    <script src="./Assets/Js/Slider.js"></script>
+    <script src="./Assets/Js/Counter.js"></script>
+    <script src="./Assets/Js/stack-card.js"></script>
+  </body>
+</html>
