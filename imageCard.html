@@ -13,70 +13,63 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
   />
   <style>
-
-    .blog-Sliders{
-        overflow: hidden;
+    .blog-Sliders {
+      overflow: hidden;
     }
-    /* Default styles for all slides */
+
     .blog-Sliders .slick-slide {
-      background-color: black;
-      color: white;
-      padding: 20px;
-      text-align: center;
       position: relative;
+      background-size: cover;
+      background-position: center;
+      padding: 20px;
+      color: white;
       transition: all 0.3s ease;
     }
 
-    /* Active slide styles */
-    .blog-Sliders .slick-slide.slick-current {
-      background-image: url('./intimg1.png');
-      background-size: cover;
-      background-position: center;
-      color: white;
-    }
-
-    .blog-Sliders .slick-slide.slick-current::before {
+    .blog-Sliders .slick-slide::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: orange; /* Default overlay color */
       z-index: 1;
+      opacity: 1; /* No transparency for non-active slides */
+      transition: background-color 0.3s ease, opacity 0.3s ease;
     }
 
-    .blog-Sliders .slick-slide.slick-current * {
+    .blog-Sliders .slick-slide.slick-current::before {
+      background-color: rgba(0, 0, 0, 0.5); /* Black overlay with transparency for active slide */
+    }
+
+    .blog-Sliders .slick-slide * {
       position: relative;
       z-index: 2;
-    }
-
-    .slide{
-        margin-inline: 20px;
     }
   </style>
 </head>
 <body>
   <div class="blog-Sliders">
-    <div class="slide">
+    <div class="slide" data-bg="./intimg1.png">
       <div class="content">
         <h3>Slide 1</h3>
         <p>Description for Slide 1</p>
       </div>
     </div>
-    <div class="slide">
+    <div class="slide" data-bg="./intimg1.png">
       <div class="content">
         <h3>Slide 2</h3>
         <p>Description for Slide 2</p>
       </div>
     </div>
-    <div class="slide">
+    <div class="slide" data-bg="./intimg1.png">
       <div class="content">
         <h3>Slide 3</h3>
         <p>Description for Slide 3</p>
       </div>
     </div>
-    <div class="slide">
+    <div class="slide" data-bg="./intimg1.png">
       <div class="content">
         <h3>Slide 4</h3>
         <p>Description for Slide 4</p>
@@ -91,30 +84,53 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
   ></script>
   <script>
-    $(".blog-Sliders").slick({
-      infinite: true,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      autoplay: true,
-      dots: false,
-      draggable: false,
-      pauseOnHover: false,
-      pauseOnFocus: false,
-      cssEase: "cubic-bezier(0.7, 0, 0.3, 1)",
-      responsive: [
-        {
-          breakpoint: 1300,
-          settings: { slidesToShow: 3, slidesToScroll: 1 },
-        },
-        {
-          breakpoint: 992,
-          settings: { slidesToShow: 2, slidesToScroll: 1 },
-        },
-        {
-          breakpoint: 540,
-          settings: { slidesToShow: 1, slidesToScroll: 1 },
-        },
-      ],
+    $(document).ready(function () {
+      const $slider = $(".blog-Sliders");
+
+      $slider.slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        dots: false,
+        draggable: false,
+        pauseOnHover: false,
+        pauseOnFocus: false,
+        cssEase: "cubic-bezier(0.7, 0, 0.3, 1)",
+        responsive: [
+          {
+            breakpoint: 1300,
+            settings: { slidesToShow: 3, slidesToScroll: 1 },
+          },
+          {
+            breakpoint: 992,
+            settings: { slidesToShow: 2, slidesToScroll: 1 },
+          },
+          {
+            breakpoint: 540,
+            settings: { slidesToShow: 1, slidesToScroll: 1 },
+          },
+        ],
+      });
+
+      function updateSlideBackground() {
+        $(".blog-Sliders .slick-slide").each(function () {
+          const $slide = $(this);
+          const bgImage = $slide.data("bg");
+          if (bgImage) {
+            $slide.css("background-image", `url(${bgImage})`);
+          }
+        });
+      }
+
+      // Trigger updates on initialization and slide changes
+      $slider.on("init afterChange", function () {
+        updateSlideBackground();
+      });
+
+      // Initialize and trigger updates
+      $slider.slick("setPosition");
+      updateSlideBackground();
     });
   </script>
 </body>

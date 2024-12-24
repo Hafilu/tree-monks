@@ -34,6 +34,54 @@ $(".Client-Sliders").slick({
 });
 
 
+$(document).ready(function () {
+  const $slider = $(".blog-Sliders");
+
+  $slider.slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    dots: false,
+    draggable: false,
+    pauseOnHover: false,
+    pauseOnFocus: false,
+    cssEase: "cubic-bezier(0.7, 0, 0.3, 1)",
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 992,
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 540,
+        settings: { slidesToShow: 1, slidesToScroll: 1 },
+      },
+    ],
+  });
+
+  function updateSlideBackground() {
+    $(".blog-Sliders .slick-slide").each(function () {
+      const $slide = $(this);
+      const bgImage = $slide.data("bg");
+      if (bgImage) {
+        $slide.css("background-image", `url(${bgImage})`);
+      }
+    });
+  }
+
+  // Trigger updates on initialization and slide changes
+  $slider.on("init afterChange", function () {
+    updateSlideBackground();
+  });
+
+  // Initialize and trigger updates
+  $slider.slick("setPosition");
+  updateSlideBackground();
+});
 
 
 const slider = document.querySelector(".image-card-slider");
