@@ -659,17 +659,22 @@
       }
       @media (min-width: 1024px) and (max-width: 1534px) {
         #circle1 {
-        left: calc(72% - 255px); /* Adjust for overlapping */
-      }
+          left: calc(72% - 255px); /* Adjust for overlapping */
+        }
 
-      #circle2 {
-        left: calc(72% - 75px); /* Center circle */
-      }
+        #circle2 {
+          left: calc(72% - 75px); /* Center circle */
+        }
 
-      #circle3 {
-        left: calc(72% + 105px); /* Adjust for overlapping */
+        #circle3 {
+          left: calc(72% + 105px); /* Adjust for overlapping */
+        }
+        .pro-right img {
+          width: 100%;
+          height: 400px;
+          object-fit: contain;
+        }
       }
-}
       /* faq section */
 
       .faq-container {
@@ -975,55 +980,50 @@
         }
       }
 
-
       /* footer */
       .footer {
         margin-top: 70px;
-        background-color:#1C1C1C;
+        background-color: #1c1c1c;
       }
 
-      .footer-content{
+      .footer-content {
         width: 85%;
         margin-inline: auto;
-      } 
+      }
 
-      .footer-top{
+      .footer-top {
         display: flex;
         justify-content: space-between;
         align-items: start;
-      padding-top: 60px;
+        padding-top: 60px;
       }
 
-       .footer-top-left h3{
+      .footer-top-left h3 {
         font-size: 70px;
         font-weight: 600;
         margin: 0px;
         margin-block: 20px;
         color: rgba(255, 255, 255, 1);
-       }
-       .footer-top-left p{
+      }
+      .footer-top-left p {
         font-size: 24px;
         font-weight: 500;
         margin: 0px;
-         
-        color: rgba(255, 255, 255, 1);
-       }
 
-      .footer-top-right .footer-tyndis{
+        color: rgba(255, 255, 255, 1);
+      }
+
+      .footer-top-right .footer-tyndis {
         width: 150px;
         height: 150px;
         object-fit: cover;
-         
       }
 
-      .footer-top-right .footer-treemonk{
-         
+      .footer-top-right .footer-treemonk {
         margin-bottom: 30px;
-         
       }
 
       .footer-container {
-        
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
@@ -1071,9 +1071,7 @@
         color: #fff;
       }
 
-       
-
-      .footer-form  {
+      .footer-form {
         border-left: 1px solid rgba(255, 255, 255, 0.1);
         padding-left: 40px;
         height: 70%;
@@ -1094,16 +1092,14 @@
       }
 
       .footer-form input[type="email"]::placeholder {
-        
         color: white;
       }
 
-      
-      .email-container{
+      .email-container {
         position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
 
       .footer-form .email-container {
@@ -1119,15 +1115,13 @@
         transform: translateY(-50%);
         background: none;
         border: none;
-        
-         
+
         cursor: pointer;
       }
 
-      .email-container img{
+      .email-container img {
         width: 35px;
         margin-top: 10px;
-        
       }
 
       .footer-bottom {
@@ -1141,16 +1135,16 @@
         justify-content: space-between;
         align-items: center;
       }
-.footer-bottom-links{
-  display: flex;
-  gap: 20px;
-}
+      .footer-bottom-links {
+        display: flex;
+        gap: 20px;
+      }
 
-.footer-bottom-links a{
-  text-decoration: none;
-  color: rgba(255, 255, 255, 1);
-  font-size: 16px;
-}
+      .footer-bottom-links a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 1);
+        font-size: 16px;
+      }
       .footer-bottom a {
         text-decoration: none;
       }
@@ -1215,36 +1209,41 @@
         margin: 0 10px;
       }
       .blog-Sliders .slick-slide {
-      position: relative;
-      background-size: cover;
-      background-position: center;
-      height: 400px;
-      padding: 15px;
-      color: white;
-      transition: all 0.3s ease;
-    }
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        padding: 15px;
+        color: white;
+        transition: all 0.3s ease;
+      }
 
-    .blog-Sliders .slick-slide::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #F15B26; /* Default overlay color */
-      z-index: 1;
-      opacity: 1; /* No transparency for non-active slides */
-      transition: background-color 0.3s ease, opacity 0.3s ease;
-    }
+      .blog-Sliders .slick-slide::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f15b26; /* Default overlay color */
+        z-index: 1;
+        opacity: 1; /* No transparency for non-active slides */
+        transition: background-color 0.3s ease, opacity 0.3s ease;
+      }
 
-    .blog-Sliders .slick-slide.slick-current::before {
-      background-color: rgba(0, 0, 0, 0.8); /* Black overlay with transparency for active slide */
-    }
+      .blog-Sliders .slick-slide.slick-current::before {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.8
+        ); /* Black overlay with transparency for active slide */
+      }
 
-    .blog-Sliders .slick-slide * {
-      position: relative;
-      z-index: 2;
-    }
+      .blog-Sliders .slick-slide * {
+        position: relative;
+        z-index: 2;
+      }
     </style>
   </head>
   <body>
@@ -1841,7 +1840,10 @@
                 <div class="blog-meta">
                   <span>17 Oct, 2024</span> <span> 5 min read</span>
                 </div>
-                <h2 class="blog-title">It is a long established fact that a reader will be distracted.</h2>
+                <h2 class="blog-title">
+                  It is a long established fact that a reader will be
+                  distracted.
+                </h2>
                 <p class="blog-description">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry....
@@ -1864,7 +1866,10 @@
                 <div class="blog-meta">
                   <span>17 Oct, 2024</span> <span> 5 min read</span>
                 </div>
-                <h2 class="blog-title">It is a long established fact that a reader will be distracted.</h2>
+                <h2 class="blog-title">
+                  It is a long established fact that a reader will be
+                  distracted.
+                </h2>
                 <p class="blog-description">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry....
@@ -1887,7 +1892,10 @@
                 <div class="blog-meta">
                   <span>17 Oct, 2024</span> <span> 5 min read</span>
                 </div>
-                <h2 class="blog-title">It is a long established fact that a reader will be distracted.</h2>
+                <h2 class="blog-title">
+                  It is a long established fact that a reader will be
+                  distracted.
+                </h2>
                 <p class="blog-description">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry....
@@ -1910,7 +1918,10 @@
                 <div class="blog-meta">
                   <span>17 Oct, 2024</span> <span> 5 min read</span>
                 </div>
-                <h2 class="blog-title">It is a long established fact that a reader will be distracted.</h2>
+                <h2 class="blog-title">
+                  It is a long established fact that a reader will be
+                  distracted.
+                </h2>
                 <p class="blog-description">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry....
@@ -1924,67 +1935,74 @@
       <!-- footer -->
       <footer class="footer">
         <div class="footer-content">
-          
-        <div class="footer-top">
-          <div class="footer-top-left">
-            <h3>Get started now</h3>
-            <p>We’d love to hear from you!</p>
-          </div>
-          <div class="footer-top-right">
-            <img src="./Assets/Images/footertyndis.png" alt="" class="footer-tyndis" />
-            <img src="./Assets/Images/footertreemonk.png" alt="" class="footer-treemonk" />
-          </div>
-        </div>
-        <div class="footer-container">
-          <div class="footer-column">
-            <h3>Featured Products</h3>
-            <ul>
-              <li><a href="#">Day Outings</a></li>
-              <li><a href="#">MBTI / OBT Training</a></li>
-              <li><a href="#">Workcation</a></li>
-              <li><a href="#">Tyndis Homes</a></li>
-            </ul>
-          </div>
-  
-          <div class="footer-column">
-            <h3>Address</h3>
-            <p>
-              Co Orbit, 10th floor - Noel Focus, <br />Infopark - Kakkanad Road, <br>
-              Kochi-682037
-            </p>
-          </div>
-  
-          <div class="footer-column  ">
-            <h3>Contact Us</h3>
-            <p>
-              
-              <a href="mailto:contact@tyndistravel.com"
-                >contact@tyndistravel.com</a
-              >
-            </p>
-            <p>  +91 9447 960 022 </p>
-            <p>+91 9495 070 022</p>
-          </div>
-  
-          <div class="footer-column footer-form ">
-             
-            <div class="email-container">
-              <input type="email" placeholder="Enter your email" />
-              <button><img src="./Assets/Images/formarrow.png" alt="" /></button>
+          <div class="footer-top">
+            <div class="footer-top-left">
+              <h3>Get started now</h3>
+              <p>We’d love to hear from you!</p>
+            </div>
+            <div class="footer-top-right">
+              <img
+                src="./Assets/Images/footertyndis.png"
+                alt=""
+                class="footer-tyndis"
+              />
+              <img
+                src="./Assets/Images/footertreemonk.png"
+                alt=""
+                class="footer-treemonk"
+              />
             </div>
           </div>
-        </div>
-  
-        <div class="footer-bottom">
-          <div class="footer-bottom-links">
-            <a href="#">About Us</a>
-            <a href="#">Why Treemonks</a>
-            <a href="#">Our products</a>
-          </div>
-          <p>&copy; 2024 - 2025 All rights reserved.</p>
-        </div>
+          <div class="footer-container">
+            <div class="footer-column">
+              <h3>Featured Products</h3>
+              <ul>
+                <li><a href="#">Day Outings</a></li>
+                <li><a href="#">MBTI / OBT Training</a></li>
+                <li><a href="#">Workcation</a></li>
+                <li><a href="#">Tyndis Homes</a></li>
+              </ul>
+            </div>
 
-      </div>
+            <div class="footer-column">
+              <h3>Address</h3>
+              <p>
+                Co Orbit, 10th floor - Noel Focus, <br />Infopark - Kakkanad
+                Road, <br />
+                Kochi-682037
+              </p>
+            </div>
+
+            <div class="footer-column">
+              <h3>Contact Us</h3>
+              <p>
+                <a href="mailto:contact@tyndistravel.com"
+                  >contact@tyndistravel.com</a
+                >
+              </p>
+              <p>+91 9447 960 022</p>
+              <p>+91 9495 070 022</p>
+            </div>
+
+            <div class="footer-column footer-form">
+              <div class="email-container">
+                <input type="email" placeholder="Enter your email" />
+                <button>
+                  <img src="./Assets/Images/formarrow.png" alt="" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <div class="footer-bottom-links">
+              <a href="#">About Us</a>
+              <a href="#">Why Treemonks</a>
+              <a href="#">Our products</a>
+            </div>
+            <p>&copy; 2024 - 2025 All rights reserved.</p>
+          </div>
+        </div>
       </footer>
     </div>
 
