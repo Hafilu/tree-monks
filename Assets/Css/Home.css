@@ -1036,9 +1036,7 @@ body {
   margin-bottom: 20px;
 }
 
-.footer-column:nth-child(n + 2) {
-  justify-items: center;
-}
+ 
 
 .footer-column h3 {
   font-size: 24px;
@@ -1498,7 +1496,12 @@ body {
     overflow: hidden;
     padding: 40px 0 0 0;
   }
-
+  .footer-container {
+    
+    grid-template-columns: auto;
+     
+  }
+  
   .footer-top {
     flex-direction: column;
   }
