@@ -85,50 +85,63 @@ $(document).ready(function () {
 
 
 const slider = document.querySelector(".image-card-slider");
-      const cards = document.querySelectorAll(".image-card");
-      const totalSlides = cards.length;
-      let currentIndex = 0;
+const items = slider.getElementsByClassName("image-card");
+const prevBtn = document.querySelector(".prev-btn");
+const nextBtn = document.querySelector(".next-btn");
 
-      // Clone the first card and append it to the end for circular effect
+let isAnimating = false; // To prevent overlapping animations
 
-      const firstClone = cards[0].cloneNode(true);
-      const secondClone = cards[1].cloneNode(true);
-      slider.appendChild(firstClone);
-      slider.appendChild(secondClone);
+function handleNext() {
+  if (isAnimating) return; // Prevent multiple clicks during animation
+  isAnimating = true;
 
-      // Function to update the slider and active card styles
-      function updateSlider() {
-        const isMobile = window.innerWidth <= 768; // Check if the device width is less than or equal to 768px
-        const translatePercentage = isMobile ? 10 : 25; // Use 10% for mobile, 25% for larger screens
-        cards.forEach((card, index) => {
-          card.classList.remove("active", "next", "prev"); // Remove all classes
+  // Prepend the last card and set initial transform
+  slider.style.transition = "none";
+  slider.prepend(items[items.length - 1]);
+  slider.style.transform = "translateX(-25%)";
 
-          if (index === currentIndex) {
-            card.classList.add("active"); // Active card (50% width)
-          } else if (index === (currentIndex + 1) % totalSlides) {
-            card.classList.add("next"); // Next card (25% width)
-          } else if (index === (currentIndex - 1 + totalSlides) % totalSlides) {
-            card.classList.add("prev"); // Previous card (25% width)
-          }
-        });
+  // Animate the slider
+  requestAnimationFrame(() => {
+    slider.style.transition = "transform 0.5s ease";
+    slider.style.transform = "translateX(0)";
+  });
 
-        if (currentIndex === 0) {
-          slider.style.transform = `translateX(-${0}%)`;
-        } else {
-          slider.classList.add("image-card-slider-transform");
-          // Move the slider to show the active card in the center
-          slider.style.transform = `translateX(-${
-            currentIndex * translatePercentage
-          }%)`;
-        }
-      }
+  // After the animation completes
+  setTimeout(() => {
+    updateActiveClass();
+    isAnimating = false;
+  }, 100); // Match the CSS transition duration
+}
 
-      // Function to show the next slide
-      function showNextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides; // Move to next card (circular transition)
-        updateSlider(); // Update the styling and position
-      }
-      updateSlider();
+function handlePrev() {
+  if (isAnimating) return; // Prevent multiple clicks during animation
+  isAnimating = true;
 
-      // Set the slider to change every 3 seconds
-      setInterval(showNextSlide, 3000);
+  // Prepend the last card and set initial transform
+  slider.style.transition = "none";
+  slider.prepend(items[items.length - 1]);
+  slider.style.transform = "translateX(-25%)";
+
+  // Animate the slider
+  requestAnimationFrame(() => {
+    slider.style.transition = "transform 0.5s ease";
+    slider.style.transform = "translateX(0)";
+  });
+
+  // After the animation completes
+  setTimeout(() => {
+    updateActiveClass();
+    isAnimating = false;
+  }, 100); // Match the CSS transition duration
+}
+
+function updateActiveClass() {
+  const cards = document.querySelectorAll(".image-card");
+  cards.forEach((card) => card.classList.remove("active"));
+  cards[0].classList.add("active");
+}
+
+nextBtn.addEventListener("click", handleNext);
+prevBtn.addEventListener("click", handlePrev);
+
+updateActiveClass();
