@@ -145,3 +145,6 @@ nextBtn.addEventListener("click", handleNext);
 prevBtn.addEventListener("click", handlePrev);
 
 updateActiveClass();
+
+
+

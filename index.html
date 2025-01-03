@@ -74,7 +74,11 @@
             </div>
           </div>
           <div class="status-item">
-            <img src="./Assets/Images/trade-center.png" alt="Icon 2" />
+            <img
+              src="./Assets/Images/trade-center.png"
+              alt="Icon 2"
+              class="sts-icon2"
+            />
             <div class="text-left">
               <div class="count" style="width: 150px">
                 <span class="sts-number">100 </span> <span>+</span>
@@ -83,7 +87,11 @@
             </div>
           </div>
           <div class="status-item">
-            <img src="./Assets/Images/booking.png" alt="Icon 3" />
+            <img
+              src="./Assets/Images/booking.png"
+              alt="Icon 3"
+              class="sts-icon2"
+            />
             <div class="text-left">
               <div class="count" style="width: 150px">
                 <span class="sts-number">500 </span> <span>+</span>
@@ -250,7 +258,7 @@
           <h5>OUR PRODUCTS</h5>
           <h3>Recommended Products</h3>
           <div class="rec-pro-cards">
-            <div class="rec-card1">
+            <div class="rec-card rec-card1">
               <img src="./Assets/Images/recpro1.png" alt="Card Image" />
               <div class="circle1">
                 <div class="arrow">
@@ -259,7 +267,7 @@
                 <div class="rec-title">WORKATION</div>
               </div>
             </div>
-            <div class="rec-card2">
+            <div class="rec-card rec-card2">
               <img src="./Assets/Images/recpro2.png" alt="Card Image" />
               <div class="circle2">
                 <div class="arrow">
@@ -350,7 +358,12 @@
                     </p>
                   </div>
                   <div>
-                    <img src="./Assets/Images/groupbtn.png" alt="" />
+                    <img
+                      src="./Assets/Images/groupbtn.png"
+                      alt=""
+                      onclick="openModal()"
+                      style="cursor: pointer"
+                    />
                   </div>
                 </div>
               </div>
@@ -365,7 +378,12 @@
                     </p>
                   </div>
                   <div>
-                    <img src="./Assets/Images/groupbtn.png" alt="" />
+                    <img
+                      src="./Assets/Images/groupbtn.png"
+                      alt=""
+                      onclick="openModal()"
+                      style="cursor: pointer"
+                    />
                   </div>
                 </div>
               </div>
@@ -380,12 +398,106 @@
                     </p>
                   </div>
                   <div>
-                    <img src="./Assets/Images/groupbtn.png" alt="" />
+                    <img
+                      src="./Assets/Images/groupbtn.png"
+                      alt=""
+                      onclick="openModal()"
+                      style="cursor: pointer"
+                    />
                   </div>
                 </div>
               </div>
             </div>
             <button class="next-btn"></button>
+          </div>
+        </div>
+
+        <div id="modalForm" class="modal">
+          <div class="modal-content">
+            <div class="modal-left">
+              <div class="modal-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </div>
+            </div>
+            <div class="modal-right">
+              <!-- <span onclick="closeModal()" class="close" title="Close Modal"
+                >×</span
+              > -->
+              <form action="/action_page.php">
+                <h2 style="text-align: center">Book your slot</h2>
+
+                <label for="name"><b>Name</b></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter your name"
+                  required
+                />
+
+                <label for="age"><b>Age</b></label>
+                <input
+                  type="number"
+                  id="age"
+                  name="age"
+                  placeholder="Enter your age"
+                  required
+                />
+
+                <label for="gender"><b>Gender</b></label>
+                <select id="gender" name="gender" required>
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+
+                <label for="company"><b>Company</b></label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  placeholder="Enter company name"
+                  required
+                />
+
+                <label for="email"><b>Email Address</b></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                />
+
+                <label for="contact"><b>Contact Number</b></label>
+                <input
+                  type="text"
+                  id="contact"
+                  name="contact"
+                  placeholder="Enter your contact number"
+                  required
+                />
+
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 20px;
+                    gap: 20px;
+                  "
+                >
+                  <button
+                    type="button"
+                    class="cancelbtn"
+                    onclick="closeModal()"
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit">Submit</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </section>
@@ -824,5 +936,6 @@
     <script src="./Assets/Js/Counter.js"></script>
     <script src="./Assets/Js/stack-card.js"></script>
     <script src="./Assets/Js/Accordion.js"></script>
+    <script src="./Assets/Js/home.js"></script>
   </body>
 </html>
