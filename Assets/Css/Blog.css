@@ -204,10 +204,6 @@ header::before {
   margin-bottom: 20px;
 }
 
-.footer-column:nth-child(n + 2) {
-  justify-items: center;
-}
-
 .footer-column h3 {
   font-size: 24px;
   margin-bottom: 15px;
@@ -360,6 +356,7 @@ header::before {
 
   .footer-container {
     margin-top: 40px;
+    grid-template-columns: auto;
   }
 
   .footer-form {
