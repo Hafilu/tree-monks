@@ -76,6 +76,7 @@ body {
   margin-left: 15px;
   width: 70px;
   margin-bottom: 30px;
+  cursor: pointer;
 }
 
 .scroll {

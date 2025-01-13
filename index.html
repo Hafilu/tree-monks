@@ -29,7 +29,14 @@
   <body>
     <div>
       <div class="banner-container">
-        <video class="banner-video" autoplay muted loop playsinline id="video-banner">
+        <video
+          class="banner-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          id="video-banner"
+        >
           <source src="./Assets/Images/video1.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -41,12 +48,24 @@
             </div>
 
             <div class="controls">
-              <button class="control-btn" id="pause-btn">
-                <img src="./Assets/Images/pause_icon.png" alt="" />
-              </button>
-              <button class="control-btn" id="play-btn" style="display: none">
-                <img src="./Assets/Images/play_icon.png" alt="" />
-              </button>
+              <div style="display: flex">
+                <button class="control-btn" id="pause-btn">
+                  <img src="./Assets/Images/pause_icon.png" alt="" />
+                </button>
+                <button class="control-btn" id="play-btn" style="display: none">
+                  <img src="./Assets/Images/play_icon.png" alt="" />
+                </button>
+                <button class="control-btn" id="mute-btn">
+                  <img src="./Assets/Images/mute.png" alt="" />
+                </button>
+                <button
+                  class="control-btn"
+                  id="unmute-btn"
+                  style="display: none"
+                >
+                  <img src="./Assets/Images/unmute.png" alt="" />
+                </button>
+              </div>
               <h1>
                 TreeMonks are pioneers in providing customised tours anywhere in
                 India
@@ -912,7 +931,8 @@
       const video = document.getElementById("video-banner");
       const pauseBtn = document.getElementById("pause-btn");
       const playBtn = document.getElementById("play-btn");
-
+      const muteBtn = document.getElementById("mute-btn");
+      const unmuteBtn = document.getElementById("unmute-btn");
       pauseBtn.addEventListener("click", () => {
         video.pause();
         pauseBtn.style.display = "none";
@@ -923,6 +943,17 @@
         video.play();
         playBtn.style.display = "none";
         pauseBtn.style.display = "block";
+      });
+      muteBtn.addEventListener("click", () => {
+        video.muted = false;
+        muteBtn.style.display = "none";
+        unmuteBtn.style.display = "block";
+      });
+
+      unmuteBtn.addEventListener("click", () => {
+        video.muted = true;
+        unmuteBtn.style.display = "none";
+        muteBtn.style.display = "block";
       });
     </script>
     <script
