@@ -429,6 +429,69 @@
             </div>
             <button class="next-btn"></button>
           </div>
+
+          <div class="  slider-container-mob">
+            <div class="mob-image-card  ">
+              <img src="./Assets/Images/tour1.png" alt="Image 1" />
+              <div class="card-content">
+                <div class="tour-slider-des">
+                  <h5>GROUP NAME</h5>
+                  <p>
+                    It is a long established fact that a reader will be
+                    distracted by the readable
+                  </p>
+                </div>
+                <div>
+                  <img
+                    src="./Assets/Images/groupbtn.png"
+                    alt=""
+                    onclick="openModal()"
+                    style="cursor: pointer"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="mob-image-card">
+              <img src="./Assets/Images/tour1.png" alt="Image 1" />
+              <div class="card-content">
+                <div class="tour-slider-des">
+                  <h5>GROUP NAME</h5>
+                  <p>
+                    It is a long established fact that a reader will be
+                    distracted by the readable
+                  </p>
+                </div>
+                <div>
+                  <img
+                    src="./Assets/Images/groupbtn.png"
+                    alt=""
+                    onclick="openModal()"
+                    style="cursor: pointer"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="mob-image-card">
+              <img src="./Assets/Images/tour1.png" alt="Image 1" />
+              <div class="card-content">
+                <div class="tour-slider-des">
+                  <h5>GROUP NAME</h5>
+                  <p>
+                    It is a long established fact that a reader will be
+                    distracted by the readable
+                  </p>
+                </div>
+                <div>
+                  <img
+                    src="./Assets/Images/groupbtn.png"
+                    alt=""
+                    onclick="openModal()"
+                    style="cursor: pointer"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div id="modalForm" class="modal">
@@ -955,6 +1018,27 @@
         unmuteBtn.style.display = "none";
         muteBtn.style.display = "block";
       });
+
+       // Pause video when it moves out of the viewport
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          // If the video is not in the viewport, pause it
+          video.pause();
+          pauseBtn.style.display = "none";
+          playBtn.style.display = "block";
+        }else{
+          video.play();
+        playBtn.style.display = "none";
+        pauseBtn.style.display = "block"; 
+        }
+      });
+    },
+    { threshold: 0.1 } // Trigger when at least 10% of the video is visible
+  );
+
+  observer.observe(video);
     </script>
     <script
       type="text/javascript"

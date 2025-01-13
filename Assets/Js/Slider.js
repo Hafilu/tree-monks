@@ -63,6 +63,8 @@ $(document).ready(function () {
     ],
   });
 
+
+  
   function updateSlideBackground() {
     $(".blog-Sliders .slick-slide").each(function () {
       const $slide = $(this);
@@ -84,12 +86,44 @@ $(document).ready(function () {
 });
 
 
+
+$(document).ready(function () {
+  const $slider = $(".slider-container-mob");
+
+  $slider.slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    dots: false,
+    draggable: false,
+    pauseOnHover: false,
+    pauseOnFocus: false,
+    cssEase: "cubic-bezier(0.7, 0, 0.3, 1)",
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 992,
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 540,
+        settings: { slidesToShow: 1, slidesToScroll: 1 },
+      },
+    ],
+  });
+})
+
 const slider = document.querySelector(".image-card-slider");
 const items = slider.getElementsByClassName("image-card");
 const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn");
 
 let isAnimating = false; // To prevent overlapping animations
+let autoSlideInterval;
 
 function handleNext() {
   if (isAnimating) return; // Prevent multiple clicks during animation
@@ -141,9 +175,24 @@ function updateActiveClass() {
   cards[0].classList.add("active");
 }
 
-nextBtn.addEventListener("click", handleNext);
-prevBtn.addEventListener("click", handlePrev);
 
+prevBtn.addEventListener("click", handlePrev);
+function startAutoSlide() {
+  autoSlideInterval = setInterval(handleNext, 3000); // Change slides every 3 seconds
+}
+
+function stopAutoSlide() {
+  clearInterval(autoSlideInterval);
+}
+
+// Add event listeners for manual controls
+nextBtn.addEventListener("click", () => {
+  stopAutoSlide();
+  handleNext();
+  startAutoSlide(); // Restart auto-slide
+});
+
+startAutoSlide()
 updateActiveClass();
 
 
